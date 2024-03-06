@@ -18,5 +18,10 @@ def main(
     print_tree(base_class_name, module)
 
 
-if __name__ == '__main__':
+def start_cli() -> None:
+    """Function to start the CLI script."""
     typer.run(main)
+
+
+if __name__ == '__main__':
+    start_cli()
