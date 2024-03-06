@@ -1,0 +1,105 @@
+[tool.poetry]
+name = "ooptree"
+version = "0.0.0-dev"
+description = "A CLI tool to visualize class hierarchies."
+authors = ["Daryl Stark <daryl@dstark.nl>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "ooprtee", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+pytest-sugar = "^0.9.7"
+pycodestyle = "^2.11.0"
+pylint = "^2.17.5"
+mypy = "^1.5.1"
+flake8 = "^6.1.0"
+pydocstyle = "^6.3.0"
+darglint2 = "^1.8.2"
+autopep8 = "^2.0.2"
+bumpver = "^2023.1126"
+toml = "^0.10.2"
+ruff = "^0.3.0"
+pre-commit = "^3.6.2"
+
+[tool.poetry.group.doc]
+optional = true
+
+[tool.poetry.group.doc.dependencies]
+sphinx = "^6.2.1"
+sphinx-rtd-theme = "^1.2.2"
+sphinxcontrib-mermaid = "^0.9.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.bumpver]
+current_version = "0.0.0-dev"
+version_pattern = "MAJOR.MINOR.PATCH[-TAG]"
+commit_message = "Version {new_version}"
+commit = true
+tag = false
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
+"src/ooprtee/__init__.py" = ["{version}"]
+"docs/source/conf.py" = ["release = '{version}'"]
+
+[tool.pytest.ini_options]
+addopts = ['--cov=ooprtee', '--cov-report=html', '--cov-report=lcov']
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+exclude = ["docs/*.py"]
+select = [
+    "E",   # pycodestyle (errors)
+    "W",   # pycodestyle (warnings)
+    "PL",  # pylint
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "LOG", # flake8-logging
+    "Q",   # flake8-quotes
+    "ANN", # flak8-annotations
+    "ICN", # flake8-import-conventions
+    "SLF", # flake8-self
+    "TD",  # flake8-todo
+    "FIX", # flake8-fixme
+    "D",   # pydocstyle
+    "F",   # Pyflakes
+    "UP",  # pyupgrade
+    "I",   # isort
+    "N",   # pep8-naming
+]
+ignore = [
+    "PLR2004",   # magic value used in comparison
+    "ANN101",    # missing type annotation for self
+    "ANN102",    # missing type annotation for cls
+    "TD003",     # missing link
+    "TD002",     # missing author
+    "PLR0913",   # too many arguments
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = 'single'
+multiline-quotes = 'double'
+
+[tool.ruff.format]
+quote-style = 'single'
+indent-style = 'space'
+docstring-code-format = true
+exclude = ["docs/*.py"]

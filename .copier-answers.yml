@@ -1,0 +1,17 @@
+# Changes here will be overwritten by Copier
+_commit: 07dfeed
+_src_path: https://github.com/DarylStark/copier_templates.git
+devcontainer: false
+github_workflow: true
+license: MIT
+package_name: ooprtee
+project_description: 'A CLI tool to visualize class hierarchies.
+
+    '
+project_description_short: 'A CLI tool to visualize class hierarchies.
+
+    '
+project_name: OOPTree
+pypi_package_description: A CLI tool to visualize class hierarchies.
+pypi_package_name: ooptree
+sphinx_docs: true
