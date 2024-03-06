@@ -4,7 +4,7 @@ _src_path: https://github.com/DarylStark/copier_templates.git
 devcontainer: false
 github_workflow: true
 license: MIT
-package_name: ooprtee
+package_name: ooptree
 project_description: 'A CLI tool to visualize class hierarchies.
 
     '
